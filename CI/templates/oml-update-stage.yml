@@ -15,6 +15,6 @@ stages:
         steps:
           - template: 'npm-steps.yml'
             parameters:
-              workingDirectory: 'CI'
+              workingDirectory: 'CI/templates'
           - script: 'npm start --environment=${{ parameters.environment }} --repositoryURL=$(Build.Repository.Uri) --branch=$(Build.SourceBranchName)'
-            workingDirectory: CI
+            workingDirectory: 'CI/templates'
