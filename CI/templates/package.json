@@ -5,10 +5,7 @@
         "xmlhttprequest": "1.8.0"
     },
     "config": {
-        "moduleName": "HelloWorldPlugin",
-        "environment": "enmobile11-dev.outsystemsenterprise.com",
-        "repositoryURL": "https://github.com/GFOutsystems/helloWorldPlugin.git",
-        "branch": "testBranch1"
+        "moduleName": "HelloWorldPlugin"
     },
     "scripts": {
         "start": "node changeExtensability.js"
