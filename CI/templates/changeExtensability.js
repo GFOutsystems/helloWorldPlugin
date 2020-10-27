@@ -1,7 +1,5 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-console.log(process.env);
-
 if(process.env.npm_package_config_moduleName == null) {
     throw new Error("Missing moduleName configuration in package.json");
 }

@@ -18,6 +18,9 @@ stages:
   - template: 'templates/tests-stage.yml'
     parameters:
       platforms: ['all'] # Platforms to test for, it can be 'all' to test all ('ios', 'js', 'android')
+  - template: 'templates/oml-update-stage.yml'
+    parameters:
+      environment: 'enmobile11-dev.outsystemsenterprise.com'
   - template: 'templates/deploy-test-env-stage.yml' # Deployment Job to deploy code for UI Testing
     parameters:
       shouldRunTests: true # Run the UI Tests immediately after deployment
