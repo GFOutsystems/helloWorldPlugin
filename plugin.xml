@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-helloworld" version="0.0.1">
+    <name>HelloWorld</name>
+
+    <description>An iOS Cordova plugin that hello worlds</description>
+    <license>Apache 2.0</license>
+
+    <keywords>cordova,in,app,hello,world</keywords>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+
+    <js-module src="www/helloworldplugin.js" name="helloworldplugin">
+        <clobbers target="plugins.helloWorld" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="HelloWorld">
+                <param name="ios-package" value="CDVHelloWorld" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/CDVHelloWorld.swift" />
+
+        <dependency id="cordova-plugin-add-swift-support" />
+    </platform>
+</plugin>
