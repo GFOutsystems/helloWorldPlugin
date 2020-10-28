@@ -8,10 +8,15 @@ if(process.env.npm_config_repositoryURL == null || process.env.npm_config_branch
     throw new Error("Missing repositoryURL, branch, environment arguments");
 }
 
+if(process.env.npm_config_authentication == null) {
+    throw new Error("Missing authentication argument");
+}
+
 var repository = process.env.npm_config_repositoryURL;
 var branch = process.env.npm_config_branch;
 var environment = process.env.npm_config_environment;
 var moduleName = process.env.npm_package_config_moduleName;
+var basicAuthentication = process.env.npm_config_authentication;
 
 var url = "https://" + environment + "/CodeUpdater/rest/Bulk/ExtensabilityUpdate";
 
@@ -20,6 +25,8 @@ var extensibilityChangeJson = {
         "url": repository+"#"+branch
     }
 };
+
+console.log("Auth:" + basicAuthentication);
 
 var extensibilityChangeString = JSON.stringify(extensibilityChangeJson);
 var buffer = new Buffer.from(extensibilityChangeString);
@@ -39,12 +46,12 @@ console.log(
 
 var request = new XMLHttpRequest();
 request.open("POST", url, false);
-request.setRequestHeader("Authorization", "Basic cGx1Z2luc0NJOm91dHN5c3RlbXMxMjM=");
+request.setRequestHeader("Authorization", basicAuthentication);
 request.setRequestHeader("Content-Type", "application/json");
 request.send(JSON.stringify(body));
 
 if(request.status == 200) {
     console.log("Successfully updated OML");
 } else {
-    throw new Error("Network Error:", request);
+    throw new Error("Network Error:" + request);
 }

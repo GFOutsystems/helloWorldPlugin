@@ -1,4 +1,8 @@
 # Squeleton of a could be a staging pipeline, stages need to be checked for the needs
+variables: 
+- group: outsystemsPluginsCIAuthentication
+- name: basicAuth
+  value: $[variables.basicAuthentication]
 
 name: 'Staging'
 
@@ -14,4 +18,5 @@ stages:
   - template: 'templates/oml-update-stage.yml'
     parameters:
       environment: 'enmobile11-dev.outsystemsenterprise.com'
+      basicAuthentication: $(basicAuth)
   - template: 'templates/deploy-test-env-stage.yml' # Deployment Job to deploy code for UI Testing
